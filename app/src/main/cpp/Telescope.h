@@ -31,18 +31,17 @@ private:
     Position *position = NULL;
     Control  *control = NULL;
     Track    *tracker = NULL;
-    bool isReady =      false;
-    bool batteryOk =    false;
-    bool isCalibrated = false;
+    bool isReady;
+    bool isCalibrated;
     double hSteps;
     double vSteps;
-    double btryVoltage;
+    double bateryVoltage;
 public:
     Telescope();
     ~Telescope();
 
     /**
-     * Telescope move action.
+     * Update telescope position.
      */
     void move();
     /**
@@ -54,19 +53,18 @@ public:
     void onTrack(bool status);
     /**
      * Calibrate the telescope.
-     *
      */
-    void Calibrate(double ra, double dec);
+    void calibrate(double ra, double dec);
+    /**
+     * Set new telescope coordinates.
+     */
+    void newCoordinates(double ra, double dec);
 
     void setIsReady(bool isReady) {
         Telescope::isReady = isReady;
     }
     bool isIsReady() const {
         return isReady;
-    }
-
-    bool isBatteryOk() const {
-        return batteryOk;
     }
 
 };

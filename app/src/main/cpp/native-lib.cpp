@@ -12,8 +12,14 @@ Java_si_vajnar_1tech_moonstalker2_MainActivity_stringFromJNI(
 
     // Create the Telescope
     Telescope *telescope = new Telescope();
-    telescope->Calibrate(0, 0);
+    telescope->calibrate(0, 0);
     __android_log_print(ANDROID_LOG_VERBOSE, APP_NAME, "Telescope created.", 1);
+
+
+    telescope->newCoordinates(16.0, 45.0);
+    telescope->move();
+    telescope->onTrack(true);
+
 
     hello += "\nTelescope ready";
 

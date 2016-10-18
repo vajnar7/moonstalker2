@@ -15,6 +15,7 @@
 
 
 #include <string>
+#include <vector>
 
 class BlueTooth {
 
@@ -26,6 +27,22 @@ public:
      * Writes message to open BT connection.
      */
     void write(std::string);
+private:
+    /**
+     * Listening for the messages from Telescope.
+     */
+    void listener();
+
+    /**
+     * Parse received message.
+     *
+     * @param msg Received ASCII message from the Telescope.
+     * @param delim Delimiter.
+     *
+     * @return Splitted message. Begins with OP code following by parameters
+     */
+     std::vector<std::string> parse(const std::string &msg, char delim);
+
 
 };
 
