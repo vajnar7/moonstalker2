@@ -37,8 +37,8 @@ void Control::move(double h, double v) {
 // Create message
 template <typename T, typename U, typename  V>
 std::string Control::sendMessage(T p1, U p2, V p3) {
-    return(SM);
     //return(SM + p1 + " " + p2 + "," + p3 + EM);
+    return(SM);
 }
 
 
