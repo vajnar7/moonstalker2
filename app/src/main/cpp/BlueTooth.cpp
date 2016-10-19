@@ -13,7 +13,9 @@
 #include <thread>
 #include "BlueTooth.h"
 #include "MessageProcessor.h"
+#include "Telescope.h"
 #include <sstream>
+#include <android/log.h>
 
 BlueTooth::BlueTooth(){
     // Connect to telescope and listen for messages
@@ -25,20 +27,30 @@ BlueTooth::~BlueTooth() {
 }
 
 // Writes message to BT connection.
-void BlueTooth::write(std::string) {
-    //TODO
+void BlueTooth::write(std::string msg) {
+    //TODO: R/W to BT not implemented yet
+    __android_log_print(ANDROID_LOG_VERBOSE, APP_NAME, msg.c_str(), 1);
+}
+
+// Read message from BT connection
+std::string BlueTooth::read() {
+    //TODO: R/W to BT not implemented yet
+    return ("BTRY 5.9");
+
 }
 
 // Listening for the messages from Telescope.
 void BlueTooth::listener() {
-    //TODO
-    while (1) {
+
+    bool running = true;
+    while (running) {
         // Get message from BT
-        std::string msg = "BTRY 12.9";
         std::vector<std::string> v;
+        std::string msg = read();
         v = parse(msg, ' ');
         auto a = new MessageProcessor(v);
-        std::this_thread::sleep_for(std::chrono::seconds(10));
+        std::this_thread::sleep_for(std::chrono::seconds(TIMEOUT));
+        running = false;
     }
 }
 

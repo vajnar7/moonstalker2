@@ -18,7 +18,7 @@ Java_si_vajnar_1tech_moonstalker2_MainActivity_stringFromJNI(
 
     telescope->newCoordinates(16.0, 45.0);
     telescope->move();
-    telescope->onTrack(true);
+    //telescope->onTrack(true);
 
 
     hello += "\nTelescope ready";

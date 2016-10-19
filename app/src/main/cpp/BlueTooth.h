@@ -17,6 +17,8 @@
 #include <string>
 #include <vector>
 
+#define TIMEOUT 10
+
 class BlueTooth {
 
 public:
@@ -26,7 +28,12 @@ public:
     /**
      * Writes message to open BT connection.
      */
-    void write(std::string);
+    void write(std::string msg);
+
+    /**
+     * Read message to open BT connection.
+     */
+    std::string read();
 private:
     /**
      * Listening for the messages from Telescope.

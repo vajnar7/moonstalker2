@@ -55,11 +55,13 @@ public:
      * Calibrate the telescope.
      */
     void calibrate(double ra, double dec);
+
     /**
      * Set new telescope coordinates.
      */
     void newCoordinates(double ra, double dec);
 
+    // Getters and setters
     void setIsReady(bool isReady) {
         Telescope::isReady = isReady;
     }
@@ -67,6 +69,9 @@ public:
         return isReady;
     }
 
+    void setBateryVoltage(double bateryVoltage) {
+        Telescope::bateryVoltage = bateryVoltage;
+    }
 };
 
 #endif //MOONSTALKER2_TELESCOPE_H

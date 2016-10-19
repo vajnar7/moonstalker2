@@ -16,15 +16,22 @@
 
 #include <string>
 #include <vector>
+#include <thread>
 
 class MessageProcessor {
+private:
+
+    std::thread t;
 public:
     MessageProcessor(std::vector <std::string> &msg);
     ~MessageProcessor();
 
 private:
-    void btry  (std::vector<std::string>::iterator &params);
-    void notRdy(std::vector<std::string>::iterator &params);
+    void btry  (std::vector<std::string>::iterator &it);
+    void notRdy(std::vector<std::string>::iterator &it);
+    void rdy   (std::vector<std::string>::iterator &it);
+    void fatal (std::vector<std::string>::iterator &it);
+
 };
 
 

@@ -22,23 +22,22 @@ Control::~Control() {
 
 // Request message for battery voltage.
 void Control::btry() {
-    bt->write(sendMessage(BTRY, "", ""));
+    std::string msg = BTRY;
+    bt->write(msg);
 }
 
 // Request message for telescope status
 void Control::st() {
-    bt->write(sendMessage(ST, "", ""));
+    std::string msg = ST;
+    bt->write(msg);
 }
 
 // Request message for move the telescope.
 void Control::move(double h, double v) {
-    bt->write(sendMessage(MOVE, (int)h, (int)v));
-}
-// Create message
-template <typename T, typename U, typename  V>
-std::string Control::sendMessage(T p1, U p2, V p3) {
-    //return(SM + p1 + " " + p2 + "," + p3 + EM);
-    return(SM);
+    char buf[256];
+    sprintf(buf, "%s%s%d%s%d", MOVE, D, (int)h, D, (int)v);
+    std::string msg = buf;
+    bt->write(msg);
 }
 
 
