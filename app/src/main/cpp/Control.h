@@ -3,10 +3,10 @@
  * Moonstalker
  * Control.h
  *
- * Purpose: Provides functions for sending control and status messages to telescope.
+ * Purpose: Provides position control functionality.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MOONSTALKER2_CONTROL_H
@@ -17,22 +17,14 @@
 // Delimiter
 #define D " "
 
-// IN Messages
-#define RDY            "RDY"
-#define NOT_RDY        "NOT_RDY"
-#define FATAL_ERROR    "FATAL_ERROR"
-#define BTRY_RESULT    "BTRY"
-
 // OUT Messages
 #define MOVE   "MV"
 #define ST     "ST?"
 #define BTRY   "BTRY?"
 
-class Control {
+#define TRACKING_PERIOD 2 //2s
 
-private:
-    BlueTooth *bt;
-
+class Control: public BlueTooth {
 public:
     Control();
     ~Control();
@@ -53,7 +45,17 @@ public:
      * @param h The number of steps in horizontal direction (altitude).
      * @param v The number of steps in vertical direction (azimuth).
      */
-    void move(double h, double v);
+    void mv(double h, double v);
+
+    /**
+     * Internal function for move the telescope
+     */
+    void move();
+
+    /**
+     * Internal function for track the telescope.
+     */
+    void track(bool status);
 };
 
 

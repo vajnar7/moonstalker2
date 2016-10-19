@@ -6,7 +6,7 @@
  * Purpose: Calculation and transformation of telescope and astronomical coordinates.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MS_CPOSITION_H
@@ -39,13 +39,13 @@ public:
     Position (double ra, double dec);
     ~Position();
 
+    // Setters and getters
     const Coordinates &getC() const {
         return c;
     }
     void setC(const Coordinates &c) {
         Position::c = c;
     }
-
     bool isHNegative() const {
         return hNegative;
     }
@@ -64,6 +64,7 @@ private:
      * @param c The coordinates to transform.
      */
     void RaDec2AltAz(Coordinates &c);
+
     /**
     * Transform the radians to degress
     *
@@ -71,6 +72,7 @@ private:
     * @return Degrees value.
     */
     double toDeg(double rad);
+
     /**
     * Transform the degrees to radians
     *
@@ -78,6 +80,7 @@ private:
     * @return Radians value.
     */
     double toRad(double deg);
+
     /**
     * Returns local siderium time.
     *

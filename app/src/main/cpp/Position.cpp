@@ -47,13 +47,10 @@ Coordinates &Position::update() {
     tmp.alt = c.alt - tmp.alt;
 
     //Check for negative alt
-    // TODO
     if (c.alt <= ALT_NEGATIVE) {
-        //h.obtainMessage(ALT_NEGATIVE_MESSAGE).sendToTarget();
         hNegative = true;
     } else {
         hNegative = false;
-        //h.obtainMessage(ALT_POSITIVE_MESSAGE).sendToTarget();
     }
 
     return tmp;

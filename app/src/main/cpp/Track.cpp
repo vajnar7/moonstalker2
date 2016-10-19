@@ -3,20 +3,21 @@
  * Moonstalker
  * Track.cpp
  *
- * Purpose: Tracing the Telescope.
+ * Purpose: Tracking the Telescope.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #include "thread"
 #include "Track.h"
 #include "Telescope.h"
+#include "Control.h"
 #include <android/log.h>
 
-Track::Track(int timeout, void *telescope) {
+Track::Track(int timeout, void *ctrl) {
     this->timeout = timeout;
-    this->telescope = telescope;
+    this->ctrl = ctrl;
 
     // start thread
     isTracking = true;
@@ -32,7 +33,7 @@ Track::~Track() {
 void Track::f() {
     __android_log_print(ANDROID_LOG_VERBOSE, APP_NAME, "Tracking", 1);
     while(isTracking) {
-        ((Telescope*)telescope)->move();
+        ((Control*)ctrl)->move();
         std::this_thread::sleep_for(std::chrono::seconds(timeout));
     }
 }

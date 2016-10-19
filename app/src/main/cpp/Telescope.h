@@ -6,14 +6,13 @@
  * Purpose: Basic functionality for controlling the Telescope.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MOONSTALKER2_TELESCOPE_H
 #define MOONSTALKER2_TELESCOPE_H
 
 #include "Position.h"
-#include "Control.h"
 #include "Track.h"
 
 // Mechanical characteristics
@@ -27,30 +26,18 @@
 #define APP_NAME "MoonStalker 2"
 
 class Telescope {
-private:
+protected:
     Position *position = NULL;
-    Control  *control = NULL;
     Track    *tracker = NULL;
-    bool isReady;
-    bool isCalibrated;
-    double hSteps;
-    double vSteps;
-    double bateryVoltage;
+    bool     isReady;
+    double   bateryVoltage;
+    double   hSteps;
+    double   vSteps;
+
 public:
     Telescope();
     ~Telescope();
 
-    /**
-     * Update telescope position.
-     */
-    void move();
-    /**
-     * Telescope tracking action.
-     *
-     * @status Start or stop tracking.
-     *
-     */
-    void onTrack(bool status);
     /**
      * Calibrate the telescope.
      */
@@ -61,14 +48,10 @@ public:
      */
     void newCoordinates(double ra, double dec);
 
-    // Getters and setters
+    // Setters & getters
     void setIsReady(bool isReady) {
         Telescope::isReady = isReady;
     }
-    bool isIsReady() const {
-        return isReady;
-    }
-
     void setBateryVoltage(double bateryVoltage) {
         Telescope::bateryVoltage = bateryVoltage;
     }

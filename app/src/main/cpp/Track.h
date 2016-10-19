@@ -3,10 +3,10 @@
  * Moonstalker
  * Track.h
  *
- * Purpose: Tracing the Telescope.
+ * Purpose: Tracking the Telescope.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MOONSTALKER2_TRACK_H
@@ -16,9 +16,9 @@ class Track {
 private:
     bool isTracking = false;
     int  timeout; // Tracking precision
-    void *telescope;
+    void *ctrl;
 public:
-    Track(int timeout, void *telescope);
+    Track(int timeout, void *ctrl);
     ~Track();
 
 private:

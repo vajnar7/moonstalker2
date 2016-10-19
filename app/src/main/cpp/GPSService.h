@@ -6,7 +6,7 @@
  * Purpose: Calculation and transformation of telescope and astronomical coordinates.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MOONSTALKER2_GPSSERVICE_H
@@ -31,6 +31,7 @@ public:
      * @return Latitude.
      */
     double getLatitude();
+
     /**
     * Retrives Longitude.
     *

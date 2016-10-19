@@ -7,7 +7,7 @@
  *          Sending and processing of BT messages.
  *
  * @author Zoran Robic
- * @version 1.1 10/4/16
+ * @version 2.1 10/4/16
  */
 
 #ifndef MOONSTALKER3_BLUETOOTH_H
@@ -16,24 +16,26 @@
 
 #include <string>
 #include <vector>
+#include "Telescope.h"
 
 #define TIMEOUT 10
 
-class BlueTooth {
-
+class BlueTooth: public Telescope {
 public:
     BlueTooth();
     ~BlueTooth();
 
+protected:
     /**
-     * Writes message to open BT connection.
+     * Writes message to opened BT connection.
      */
     void write(std::string msg);
 
     /**
-     * Read message to open BT connection.
+     * Read message to opened BT connection.
      */
     std::string read();
+
 private:
     /**
      * Listening for the messages from Telescope.
@@ -49,8 +51,6 @@ private:
      * @return Splitted message. Begins with OP code following by parameters
      */
      std::vector<std::string> parse(const std::string &msg, char delim);
-
-
 };
 
 

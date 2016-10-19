@@ -18,10 +18,12 @@ GPSService::GPSService(double lon, double lat) {
 
 // Retrives Latitude.
 double GPSService::getLatitude() {
+    //TODO: implement from HW LIB
     return latitude;
 }
 
 // Retrives Longitude
 double GPSService::getLongitude() {
+    //TODO: implement from HW LIB
     return longitude;
 }
